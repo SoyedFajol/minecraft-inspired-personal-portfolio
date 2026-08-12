@@ -121,9 +121,9 @@ qa/             manual test cases, release checklist, API tests, k6 load test
 
 ---
 
-Built & QA-tested by **Soyed Md. Solaman Fajul (Soyed Solaman)** —
-Junior SQA Engineer @ BRAC IT Services Ltd., Dhaka · software engineer by
+Built & QA-tested by **Soyed Md. Solaman Fajul (Soyed Solaman)** 
+Junior SQA Engineer @ BRAC IT Services Ltd, Dhaka · software engineer by
 passion, who loves to build things and then test them properly · on the
-road to AI engineering.
+road to AI QA engineering.
 [GitHub](https://github.com/SoyedFajol) ·
 [LinkedIn](https://www.linkedin.com/in/soyed-md-solaman-fajul-a492b6214/)
