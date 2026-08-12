@@ -64,13 +64,13 @@ export default function FlatWorld() {
       <footer className="mt-10 text-center font-body text-xs text-ink-dim">
         <a className="underline hover:text-ink" href="/resume">Resume</a>
         {' · '}
-        <a className="underline hover:text-ink" href="https://github.com/SoyedFajol/qa-portfolio" target="_blank" rel="noreferrer">Source</a>
+        <a className="underline hover:text-ink" href="https://github.com/SoyedFajol/minecraft-portfolio" target="_blank" rel="noreferrer">Source</a>
         {' · '}
         <a className="underline hover:text-ink" href="/privacy">Privacy</a>
         {' · '}
         <a className="underline hover:text-ink" href="/terms">Terms</a>
         {' · '}
-        <a className="underline hover:text-ink" href={`mailto:${PROFILE.email}?subject=🐞 Bug report — qa-portfolio`}>
+        <a className="underline hover:text-ink" href={`mailto:${PROFILE.email}?subject=🐞 Bug report — minecraft-portfolio`}>
           🐞 Report a bug
         </a>
       </footer>

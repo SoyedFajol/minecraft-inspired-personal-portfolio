@@ -1799,6 +1799,120 @@ function TrainLine({ mobile }) {
 }
 
 /** Sky: a few clouds drifting over the city (white by day, dim by night). */
+/** ⛏️ Minecraft extras: chunky oak trees on the inner meadow, floating
+ * grass islands bobbing in the sky, and glowing ore blocks half-buried
+ * along the road. All instanced or tiny fixed counts — mobile gets fewer. */
+function MinecraftExtras({ mobile, theme }) {
+  const islandRefs = useRef([])
+
+  const { trunks, leaves } = useMemo(() => {
+    // chunky plus-shaped oaks, kept on the inner meadow (radius 8–14 is
+    // clear of the garden rows at 17.6, the wheel at 21 and the road)
+    const trunkItems = []
+    const leafItems = []
+    const count = mobile ? 4 : 7
+    const leafBase = theme === 'day' ? [76, 165, 88] : [45, 122, 68]
+    for (let i = 0; i < count; i++) {
+      const ang = seeded(i * 31 + 7) * TAU
+      const rad = 8 + seeded(i * 31 + 8) * 6
+      const x = LOOP_CENTER.x + Math.sin(ang) * rad
+      const z = LOOP_CENTER.z + Math.cos(ang) * rad
+      const h = 1.9 + seeded(i * 31 + 9) * 0.8
+      trunkItems.push({ pos: [x, h / 2, z], scale: [0.5, h, 0.5], color: '#6b4a2e' })
+      const j = seeded(i * 31 + 10) * 30 - 15
+      const leaf = `rgb(${leafBase[0] + j | 0},${leafBase[1] + j | 0},${leafBase[2] + (j / 2) | 0})`
+      leafItems.push({ pos: [x, h + 0.7, z], scale: [1.5, 1.5, 1.5], color: leaf })
+      leafItems.push({ pos: [x + 0.95, h + 0.45, z], scale: [1, 1, 1], color: leaf })
+      leafItems.push({ pos: [x - 0.95, h + 0.45, z], scale: [1, 1, 1], color: leaf })
+      leafItems.push({ pos: [x, h + 0.45, z + 0.95], scale: [1, 1, 1], color: leaf })
+      leafItems.push({ pos: [x, h + 0.45, z - 0.95], scale: [1, 1, 1], color: leaf })
+    }
+    return { trunks: trunkItems, leaves: leafItems }
+  }, [mobile, theme])
+
+  const islands = useMemo(() => {
+    const grass = theme === 'day' ? '#4c9b50' : '#2d7a44'
+    const count = mobile ? 2 : 3
+    return [...Array(count)].map((_, i) => ({
+      key: i,
+      pos: [
+        LOOP_CENTER.x + (seeded(i + 71) - 0.5) * 30,
+        11 + seeded(i + 72) * 4,
+        LOOP_CENTER.z + (seeded(i + 73) - 0.5) * 30,
+      ],
+      s: 0.8 + seeded(i + 74) * 0.5,
+      grass,
+    }))
+  }, [mobile, theme])
+
+  const ores = useMemo(() => {
+    // glowing ore cubes just off the road's edge, like the wild flowers
+    const list = []
+    const count = mobile ? 4 : 8
+    const COLORS = ['#4dd8e6', '#ffd93d', '#ff5d5d', '#39ff88'] // 💎 🪙 🔴 🟢
+    for (let i = 0; i < count; i++) {
+      const u = seeded(i * 23 + 5)
+      // keep clear of the gap and the cliff
+      if ((u > GAP_START - 0.02 && u < GAP_END + 0.02) || u > CLIFF_T - 0.02) continue
+      const p = pathPoint(u)
+      const off = 2.6 + seeded(i + 85) * 1.2
+      list.push({
+        pos: [p.x + p.nx * off, 0.1, p.z + p.nz * off],
+        scale: [0.5, 0.5, 0.5],
+        rot: [0, seeded(i + 86) * TAU, 0],
+        color: COLORS[i % COLORS.length],
+      })
+    }
+    return list
+  }, [mobile])
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime
+    islandRefs.current.forEach((g, i) => {
+      if (g) g.position.y = islands[i].pos[1] + Math.sin(t * 0.4 + i * 2.1) * 0.6
+    })
+  })
+
+  return (
+    <group>
+      <Boxes items={trunks} />
+      <Boxes items={leaves} />
+      <Boxes items={ores} emissive="#ffffff" emissiveIntensity={0.45} />
+
+      {islands.map((isl, i) => (
+        <group
+          key={isl.key}
+          position={isl.pos}
+          scale={[isl.s, isl.s, isl.s]}
+          ref={(el) => (islandRefs.current[i] = el)}
+        >
+          <mesh>
+            <boxGeometry args={[3, 0.55, 3]} />
+            <meshStandardMaterial color={isl.grass} />
+          </mesh>
+          <mesh position={[0, -0.7, 0]}>
+            <boxGeometry args={[2.2, 0.9, 2.2]} />
+            <meshStandardMaterial color="#6b4a2e" />
+          </mesh>
+          <mesh position={[0, -1.4, 0]}>
+            <boxGeometry args={[1.2, 0.7, 1.2]} />
+            <meshStandardMaterial color="#5f4229" />
+          </mesh>
+          {/* tiny oak on top */}
+          <mesh position={[0.5, 0.7, 0.3]}>
+            <boxGeometry args={[0.22, 0.9, 0.22]} />
+            <meshStandardMaterial color="#6b4a2e" />
+          </mesh>
+          <mesh position={[0.5, 1.35, 0.3]}>
+            <boxGeometry args={[0.85, 0.85, 0.85]} />
+            <meshStandardMaterial color={isl.grass} />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  )
+}
+
 function SkyLife({ mobile, cloudColor, cloudOpacity }) {
   const cloudGroup = useRef()
 
@@ -2135,6 +2249,7 @@ export default function World({ progressRef, visitedIds, onOpenSection }) {
         <Beach />
         <Stadium />
         <Nature mobile={mobile} />
+        <MinecraftExtras mobile={mobile} theme={theme} />
         <TrainLine mobile={mobile} />
         <BangladeshLandmarks mobile={mobile} />
         <SkyLife mobile={mobile} cloudColor={T.cloud} cloudOpacity={T.cloudOpacity} />

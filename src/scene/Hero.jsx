@@ -5,11 +5,11 @@ import { pathPoint, PATH_LENGTH, GAP_START, CLIFF_T } from './constants'
 import { sfx } from '../game/sfx'
 
 const SKIN = '#e8b17e'
-// Argentina 2026 kit — REHEL 10 🇦🇷
-const JERSEY = '#f4f8ff'
-const ALBI = '#75aadb' // albiceleste sky blue
-const SHORTS = '#171d33'
-const SOCKS = '#f4f8ff'
+// FC Barcelona blaugrana kit — REHEL 10
+const JERSEY = '#a50044' // garnet
+const BLAU = '#004d98' // barça blue
+const SHORTS = '#004d98'
+const SOCKS = '#004d98'
 const DARK = '#181c33'
 
 const GRAVITY = 22
@@ -149,7 +149,7 @@ export default function Hero({ speedRef, tRef }) {
       onPointerOver={() => (document.body.style.cursor = 'pointer')}
       onPointerOut={() => (document.body.style.cursor = 'auto')}
     >
-      {/* legs: dark shorts over white socks */}
+      {/* legs: blue shorts over blue socks */}
       <group position={[-0.16, 0.55, 0]} ref={legL}>
         <mesh position={[0, -0.13, 0]} castShadow>
           <boxGeometry args={[0.22, 0.28, 0.24]} />
@@ -171,25 +171,25 @@ export default function Hero({ speedRef, tRef }) {
         </mesh>
       </group>
 
-      {/* torso: the albiceleste jersey */}
+      {/* torso: the blaugrana jersey */}
       <group ref={body} position={[0, 1.05, 0]}>
         <mesh castShadow>
           <boxGeometry args={[0.72, 0.75, 0.42]} />
           <meshStandardMaterial color={JERSEY} />
         </mesh>
-        {/* sky-blue vertical stripes, front and back */}
+        {/* blue vertical stripes over garnet, front and back */}
         {[0.215, -0.215].map((z) =>
           [-0.22, 0, 0.22].map((x) => (
             <mesh key={`${z}-${x}`} position={[x, 0, z]}>
               <boxGeometry args={[0.13, 0.75, 0.015]} />
-              <meshStandardMaterial color={ALBI} />
+              <meshStandardMaterial color={BLAU} />
             </mesh>
           ))
         )}
         {/* collar */}
         <mesh position={[0, 0.36, 0]}>
           <boxGeometry args={[0.4, 0.06, 0.44]} />
-          <meshStandardMaterial color={ALBI} />
+          <meshStandardMaterial color={BLAU} />
         </mesh>
         {/* REHEL 10 on the back — big enough to read from the chase camera */}
         <Html
@@ -202,14 +202,14 @@ export default function Hero({ speedRef, tRef }) {
         >
           <div className="select-none text-center leading-none">
             <p
-              className="font-pixel text-[12px] tracking-[0.2em] text-[#0a0d1a]"
-              style={{ textShadow: '0 0 2px #fff, 0 0 3px #fff, 1px 1px 0 #fff, -1px -1px 0 #fff' }}
+              className="font-pixel text-[12px] tracking-[0.2em] text-[#ffcb05]"
+              style={{ textShadow: '0 0 2px #0a0d1a, 0 0 3px #0a0d1a, 1px 1px 0 #0a0d1a, -1px -1px 0 #0a0d1a' }}
             >
               REHEL
             </p>
             <p
-              className="mt-0.5 font-pixel text-[34px] text-[#0a0d1a]"
-              style={{ textShadow: '0 0 3px #fff, 0 0 4px #fff, 2px 2px 0 #fff, -2px -2px 0 #fff' }}
+              className="mt-0.5 font-pixel text-[34px] text-[#ffcb05]"
+              style={{ textShadow: '0 0 3px #0a0d1a, 0 0 4px #0a0d1a, 2px 2px 0 #0a0d1a, -2px -2px 0 #0a0d1a' }}
             >
               10
             </p>
@@ -244,7 +244,7 @@ export default function Hero({ speedRef, tRef }) {
         <group ref={armL} position={[-0.45, 0.25, 0]}>
           <mesh position={[0, -0.14, 0]} castShadow>
             <boxGeometry args={[0.18, 0.3, 0.2]} />
-            <meshStandardMaterial color={ALBI} />
+            <meshStandardMaterial color={BLAU} />
           </mesh>
           <mesh position={[0, -0.44, 0]} castShadow>
             <boxGeometry args={[0.17, 0.3, 0.19]} />
@@ -264,7 +264,7 @@ export default function Hero({ speedRef, tRef }) {
         <group ref={armR} position={[0.45, 0.25, 0]}>
           <mesh position={[0, -0.14, 0]} castShadow>
             <boxGeometry args={[0.18, 0.3, 0.2]} />
-            <meshStandardMaterial color={ALBI} />
+            <meshStandardMaterial color={BLAU} />
           </mesh>
           <mesh position={[0, -0.44, 0]} castShadow>
             <boxGeometry args={[0.17, 0.3, 0.19]} />

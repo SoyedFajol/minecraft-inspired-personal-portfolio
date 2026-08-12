@@ -110,7 +110,7 @@ export default function NavMenu() {
               <div className="font-body text-xs text-ink-dim">
                 <a className="underline hover:text-ink" href="/resume">Resume</a>
                 {' · '}
-                <a className="underline hover:text-ink" href="https://github.com/SoyedFajol/qa-portfolio" target="_blank" rel="noreferrer">Source</a>
+                <a className="underline hover:text-ink" href="https://github.com/SoyedFajol/minecraft-portfolio" target="_blank" rel="noreferrer">Source</a>
                 {' · '}
                 <a className="underline hover:text-ink" href="/privacy">Privacy</a>
                 {' · '}

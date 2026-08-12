@@ -225,7 +225,7 @@ function GameWorld() {
           <p className="mt-3">
             <a className="underline hover:text-ink" href="/resume">Resume</a>
             {' · '}
-            <a className="underline hover:text-ink" href="https://github.com/SoyedFajol/qa-portfolio" target="_blank" rel="noreferrer">
+            <a className="underline hover:text-ink" href="https://github.com/SoyedFajol/minecraft-portfolio" target="_blank" rel="noreferrer">
               Source ⭐
             </a>
             {' · '}
@@ -233,7 +233,7 @@ function GameWorld() {
             {' · '}
             <a className="underline hover:text-ink" href="/terms">Terms</a>
             {' · '}
-            <a className="underline hover:text-ink" href="mailto:soyedmdsolemanfajul@gmail.com?subject=🐞 Bug report — qa-portfolio">
+            <a className="underline hover:text-ink" href="mailto:soyedmdsolemanfajul@gmail.com?subject=🐞 Bug report — minecraft-portfolio">
               🐞 Report a bug
             </a>
           </p>

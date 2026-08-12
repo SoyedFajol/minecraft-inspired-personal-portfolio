@@ -1,5 +1,5 @@
 {
-  "name": "soyed-qa-portfolio",
+  "name": "minecraft-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -8,6 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
+    "test:api": "node --test qa/api/api-tests.mjs",
+    "test:security": "node --test qa/security/security-tests.mjs",
     "lint": "eslint ."
   },
   "dependencies": {

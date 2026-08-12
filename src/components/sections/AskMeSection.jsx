@@ -46,7 +46,7 @@ function RavenForm() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `🐦 Raven from ${name} — qa-portfolio`,
+          subject: `🐦 Raven from ${name} — minecraft-portfolio`,
           name, email, message,
         }),
       })

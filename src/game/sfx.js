@@ -92,7 +92,15 @@ let step = 0
 function scheduleStep(s, t) {
   const lead = LEAD[s % STEPS]
   if (lead) tone(lead, STEP * 1.8, 'square', 0.012, t, true)
-  if (s % 16 === 0) tone(BASS[Math.floor(s / 16) % BASS.length], STEP * 14, 'triangle', 0.022, t, true)
+  if (s % 16 === 0) {
+    const bar = Math.floor(s / 16) % BASS.length
+    tone(BASS[bar], STEP * 14, 'triangle', 0.022, t, true)
+    // soothing pad: a soft sine fifth breathing under each bar
+    tone(BASS[bar] * 2, STEP * 16, 'sine', 0.01, t, true)
+    tone(BASS[bar] * 3, STEP * 16, 'sine', 0.006, t, true)
+    // a distant wind-chime on alternating bars
+    if (bar % 2 === 1) tone(2093, STEP * 6, 'triangle', 0.004, t + STEP * 6, true)
+  }
   if (s % 8 === 4) noise(0.03, 0.006, 5000, t, true) // off-beat hat
 }
 
@@ -122,6 +130,15 @@ export const sfx = {
     musicTimer = null
   },
 
+  /** START GAME — a joyful rising jingle (C major up two octaves + sparkle) */
+  start() {
+    if (muted()) return
+    ;[523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) =>
+      tone(f, 0.14, 'triangle', 0.045, i * 0.07)
+    )
+    tone(2093, 0.25, 'sine', 0.02, 0.38)
+    noise(0.18, 0.008, 6000, 0.38)
+  },
   /** UI click / menu move */
   blip() {
     if (muted()) return

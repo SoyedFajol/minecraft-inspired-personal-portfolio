@@ -28,11 +28,20 @@ export default [
     },
   },
   {
-    files: ['api/**/*.js', 'tests/**/*.js', '*.config.js', 'scripts/**/*.js'],
+    files: ['api/**/*.js', 'tests/**/*.js', '*.config.js', 'scripts/**/*.js', 'qa/**/*.mjs'],
     languageOptions: {
       ecmaVersion: 2023,
       sourceType: 'module',
       globals: { ...globals.node },
+    },
+  },
+  {
+    // k6 scripts run inside the k6 runtime, not Node
+    files: ['qa/load/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2023,
+      sourceType: 'module',
+      globals: { __ENV: 'readonly' },
     },
   },
 ]
