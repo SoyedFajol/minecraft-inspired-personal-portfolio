@@ -83,6 +83,7 @@ src/
   components/   pixel UI (HUD, overlays, sections, intro screen)
   scene/        the 3D world — hero, terrain, city, NPCs, checkpoints
   game/         progression: XP curve, ranks, rewards, synthesized sfx
+  hooks/        reusable hooks (reduced-motion, localStorage, …)
   store/        zustand stores (game save + UI state)
   data/         frontend re-exports of lib/profile
   styles/       Tailwind + palette CSS variables
@@ -120,7 +121,9 @@ qa/             manual test cases, release checklist, API tests, k6 load test
 
 ---
 
-Built & QA-tested by **Soyed Md. Solaman Fajul (Soyed Solaman)** — Software
-Engineer · SQA @ BRAC IT Services Ltd., Dhaka.
+Built & QA-tested by **Soyed Md. Solaman Fajul (Soyed Solaman)** —
+Junior SQA Engineer @ BRAC IT Services Ltd., Dhaka · software engineer by
+passion, who loves to build things and then test them properly · on the
+road to AI engineering.
 [GitHub](https://github.com/SoyedFajol) ·
 [LinkedIn](https://www.linkedin.com/in/soyed-md-solaman-fajul-a492b6214/)
