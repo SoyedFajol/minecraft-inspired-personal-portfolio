@@ -47,8 +47,8 @@ visitors.
 ## Quick start
 
 ```bash
-git clone https://github.com/SoyedFajol/minecraft-portfolio.git
-cd minecraft-portfolio
+git clone https://github.com/SoyedFajol/minecraft-inspired-personal-portfolio.git
+cd minecraft-inspired-personal-portfolio
 npm install
 npm run dev      # → http://localhost:5173
 ```
