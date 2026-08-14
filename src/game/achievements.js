@@ -22,5 +22,5 @@ export function achievementById(id) {
 /** Section ids that count toward World Explorer (chat is a companion, not a level). */
 export const EXPLORABLE_SECTIONS = [
   'journey', 'skills', 'projects', 'dungeon', 'roadmap',
-  'game', 'jobs', 'ask', 'sidequests', 'contact',
+  'game', 'jobs', 'ask', 'sidequests', 'contact', 'services',
 ]

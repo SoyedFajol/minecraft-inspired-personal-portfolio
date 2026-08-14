@@ -39,6 +39,7 @@ import CompanyDirectory from './components/sections/CompanyDirectory'
 import AskMeSection from './components/sections/AskMeSection'
 import SideQuestsSection from './components/sections/SideQuestsSection'
 import ContactSection from './components/sections/ContactSection'
+import ServicesSection from './components/sections/ServicesSection'
 
 const World = lazy(() => import('./scene/World'))
 
@@ -54,6 +55,7 @@ const SECTION_COMPONENTS = {
   ask: AskMeSection,
   sidequests: SideQuestsSection,
   contact: ContactSection,
+  services: ServicesSection,
 }
 const WIDE_SECTIONS = new Set(['dungeon', 'game', 'jobs', 'companies', 'ask', 'projects'])
 

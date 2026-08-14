@@ -20,6 +20,7 @@ export const SECTIONS = [
   { id: 'sidequests', round: 1, icon: '🏆', label: 'Achievements & Extracurricular', blurb: 'CP trophies, sports, campus life', at: 0.24 },
   { id: 'roadmap', round: 1, icon: '🧭', label: 'Career Roadmaps', blurb: 'QA, AI, frontend, backend, CP — with resources', at: 0.30 },
   { id: 'contact', round: 1, icon: '💌', label: 'Resume & Contact', blurb: 'Join my party', at: 0.36 },
+  { id: 'services', round: 1, icon: '🛠️', label: 'Services Guild', blurb: 'Hire me for a quest', at: 0.385 },
 
   // ── the GAP: jump to Round 2 ── (walkway hole at 0.405–0.425)
 
