@@ -1,6 +1,10 @@
 import { useEffect } from 'react'
 import { PROFILE } from '../data/profile'
+import { PROJECTS } from '../data/projects'
 import { trackEvent } from '../game/analytics'
+
+// the four projects a recruiter should see first
+const RESUME_PROJECT_IDS = ['portfolio', 'bug-report-agent', 'playwright-python', 'httpbin-postman']
 
 /**
  * /resume — a clean, print-optimized resume built from the shared profile.
@@ -54,6 +58,25 @@ export default function ResumePage() {
               </ul>
             </div>
           ))}
+        </section>
+
+        <section aria-label="Projects">
+          <h2 className="resume-h">PROJECTS</h2>
+          {RESUME_PROJECT_IDS.map((id) => {
+            const p = PROJECTS.find((x) => x.id === id)
+            return (
+              <div key={id} className="mb-3">
+                <p className="font-semibold text-ink">
+                  {p.title}{' '}
+                  <a className="text-xs font-normal text-neon underline" href={p.url} target="_blank" rel="noreferrer">
+                    GitHub ↗
+                  </a>
+                </p>
+                <p className="text-xs text-ink-dim">{p.tags.join(' · ')}</p>
+                <p className="mt-1 text-ink-dim">{p.desc}</p>
+              </div>
+            )
+          })}
         </section>
 
         <section aria-label="Education">

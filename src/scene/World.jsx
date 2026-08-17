@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Stars, Sparkles, Html } from '@react-three/drei'
 import * as THREE from 'three'
@@ -2211,9 +2211,18 @@ export default function World({ progressRef, visitedIds, onOpenSection }) {
   const theme = useUiStore((s) => s.theme)
   const T = THEMES[theme]
 
+  // Hidden tab → stop the render loop entirely (battery + Lighthouse)
+  const [visible, setVisible] = useState(() => !document.hidden)
+  useEffect(() => {
+    const onVis = () => setVisible(!document.hidden)
+    document.addEventListener('visibilitychange', onVis)
+    return () => document.removeEventListener('visibilitychange', onVis)
+  }, [])
+
   return (
     <div className="fixed inset-0 z-0" aria-hidden="true">
       <Canvas
+        frameloop={visible ? 'always' : 'never'}
         dpr={[1, mobile ? 1.25 : 1.5]}
         camera={{ fov: 55, near: 0.1, far: 210, position: [0, 6.2, 10] }}
         gl={{ antialias: !mobile, powerPreference: 'high-performance' }}

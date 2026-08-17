@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Soyed Solaman — A Minecraft-inspired Personal Portfolio</title>
-    <meta name="description" content="A Minecraft-inspired personal portfolio — the interactive 3D world of Soyed Md. Solaman Fajul, Software Engineer, SQA, AI Engineer, gamer and sportsperson from Chapainawabganj, Bangladesh. Walk a winding road around a voxel mini city: Round 1 tells the story, Round 2 is a playground with a QA learning game, interview question dungeon, live Bangladesh job quests, a company codex and a print-ready resume." />
+    <title>Soyed Solaman — Jr. SQA Engineer · Automation & API Testing</title>
+    <meta name="description" content="Soyed Solaman — Jr. SQA Engineer at BRAC IT Services Ltd., Dhaka. Automation & API testing: Playwright, Postman, Swagger, CI/CD. Explore the QA-tested interactive 3D portfolio or jump straight to the resume and projects." />
     <link rel="canonical" href="https://soyed-solaman.vercel.app/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Soyed Solaman — A Minecraft-inspired Personal Portfolio" />
-    <meta property="og:description" content="The QA engineer whose portfolio IS a QA-tested game. Press start to explore skills, projects, a learning game, and live job quests." />
+    <meta property="og:title" content="Soyed Solaman — Jr. SQA Engineer · Automation & API Testing" />
+    <meta property="og:description" content="The QA engineer whose portfolio IS a QA-tested game. Press start to explore, or skip straight to the resume and projects." />
     <meta property="og:url" content="https://soyed-solaman.vercel.app/" />
     <meta property="og:image" content="https://soyed-solaman.vercel.app/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Soyed Solaman — A Minecraft-inspired Personal Portfolio" />
-    <meta name="twitter:description" content="A Minecraft-inspired gamified 3D personal portfolio. Press start." />
+    <meta name="twitter:title" content="Soyed Solaman — Jr. SQA Engineer · Automation & API Testing" />
+    <meta name="twitter:description" content="A QA-tested, Minecraft-inspired 3D portfolio. Press start — or skip to the resume." />
     <meta name="twitter:image" content="https://soyed-solaman.vercel.app/og.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -24,20 +24,67 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Soyed Md. Solaman Fajul",
+      "alternateName": "Soyed Solaman",
+      "jobTitle": "Jr. SQA Engineer",
+      "worksFor": { "@type": "Organization", "name": "BRAC IT Services Ltd." },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "American International University-Bangladesh (AIUB)" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Dhaka", "addressCountry": "BD" },
+      "email": "mailto:soyedmdsolemanfajul@gmail.com",
+      "url": "https://soyed-solaman.vercel.app/",
+      "image": "https://soyed-solaman.vercel.app/og.png",
+      "sameAs": [
+        "https://github.com/SoyedFajol",
+        "https://www.linkedin.com/in/soyed-md-solaman-fajul-a492b6214/"
+      ],
+      "knowsAbout": ["Software Quality Assurance", "Test Automation", "API Testing", "Playwright", "Postman", "Manual Testing", "CI/CD"]
+    }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
-    <noscript>
-      <div style="font-family: monospace; color: #e6e9ff; padding: 2rem; text-align: center">
-        <h1>Soyed Md. Solaman Fajul — Jr. SQA Engineer · Engineer by passion</h1>
-        <p>This portfolio is a small game and needs JavaScript.</p>
-        <p>
-          Email: soyedmdsolemanfajul@gmail.com ·
-          <a href="https://github.com/SoyedFajol" style="color: #39ff88">GitHub</a> ·
-          <a href="https://www.linkedin.com/in/soyed-md-solaman-fajul-a492b6214/" style="color: #39ff88">LinkedIn</a>
+    <!-- Static first paint: shows instantly (before any JS), doubles as the
+         indexable resume content for crawlers, and is the no-JS fallback.
+         React replaces everything inside #root the moment it mounts. -->
+    <div id="root">
+      <div style="font-family: Inter, system-ui, sans-serif; color: #e6e9ff; max-width: 640px; margin: 0 auto; padding: 2.5rem 1.25rem; text-align: center">
+        <p style="font-size: 2.5rem; margin: 0" aria-hidden="true">🐞</p>
+        <h1 style="font-family: 'Press Start 2P', monospace; font-size: 1rem; line-height: 1.8; color: #ffd93b; margin: 1rem 0 0">SOYED MD. SOLAMAN FAJUL</h1>
+        <p style="font-size: 0.95rem; color: #9aa3d0; margin: 0.75rem 0 1.5rem">Jr. SQA Engineer · Automation &amp; API Testing · BRAC IT Services Ltd., Dhaka</p>
+        <p style="font-family: 'Press Start 2P', monospace; font-size: 0.65rem; color: #39ff88; border: 3px solid #39ff88; display: inline-block; padding: 0.9rem 1.6rem">LOADING WORLD…</p>
+        <p style="font-size: 0.8rem; color: #9aa3d0; margin-top: 1rem">🖱️ Scroll / WASD to walk · drag to look · tap 💎 crystals to open sections</p>
+        <p style="margin-top: 1.25rem">
+          <a href="/resume" style="color: #39ff88; font-weight: 600">Skip the game → View resume &amp; projects</a>
         </p>
+        <noscript><p style="color: #ff6b6b; font-size: 0.85rem">The interactive world needs JavaScript — the resume link above works without it.</p></noscript>
+
+        <div style="text-align: left; font-size: 0.85rem; color: #9aa3d0; margin-top: 3rem; border-top: 1px solid #2a3158; padding-top: 1.5rem">
+          <h2 style="font-size: 1rem; color: #e6e9ff">About</h2>
+          <p>SQA Engineer with hands-on experience testing microservices-based enterprise applications, including large-scale ERP systems. Strong in manual testing, test case design, API testing with Postman and Swagger, defect tracking, and UAT execution in Agile/Scrum teams. Growing expertise in test automation with Playwright and Selenium.</p>
+          <h2 style="font-size: 1rem; color: #e6e9ff">Skills</h2>
+          <p>Manual Testing · API Testing (Postman, Swagger) · Test Automation (Playwright, Selenium) · Java · Python · JavaScript · SQL/MySQL/PostgreSQL · Jira · Git · CI/CD (GitHub Actions) · AI-assisted QA</p>
+          <h2 style="font-size: 1rem; color: #e6e9ff">Projects</h2>
+          <ul>
+            <li>This portfolio — a QA-tested 3D game (React + Three.js) with 55+ unit tests, Playwright end-to-end tests and CI on every push. <a href="https://github.com/SoyedFajol/minecraft-inspired-personal-portfolio" style="color: #39ff88">Source</a></li>
+            <li>Bug Report Agent — AI-powered bug report generation (FastAPI, React, GPT-4). <a href="https://github.com/SoyedFajol/bug-report-agent" style="color: #39ff88">Repo</a></li>
+            <li>Playwright × Python — automation practice framework. <a href="https://github.com/SoyedFajol/playwrightwithpython" style="color: #39ff88">Repo</a></li>
+            <li>httpbin Postman Collection — API testing kata with test scripts on every request. <a href="https://github.com/SoyedFajol/httpbin-postman-collection" style="color: #39ff88">Repo</a></li>
+          </ul>
+          <h2 style="font-size: 1rem; color: #e6e9ff">Experience &amp; Education</h2>
+          <p>Jr. SQA Engineer — BRAC IT Services Ltd. (May 2025–present) · Java Developer Intern — CMED Health Ltd. · B.Sc. CSE, AIUB (CGPA 3.44)</p>
+          <h2 style="font-size: 1rem; color: #e6e9ff">Contact</h2>
+          <p>
+            Open to SQA roles — <a href="mailto:soyedmdsolemanfajul@gmail.com" style="color: #39ff88">soyedmdsolemanfajul@gmail.com</a> ·
+            <a href="https://github.com/SoyedFajol" style="color: #39ff88">GitHub</a> ·
+            <a href="https://www.linkedin.com/in/soyed-md-solaman-fajul-a492b6214/" style="color: #39ff88">LinkedIn</a> ·
+            <a href="/resume" style="color: #39ff88">Full resume</a>
+          </p>
+        </div>
       </div>
-    </noscript>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { PROFILE } from '../data/profile'
 import { useUiStore } from '../store/useUiStore'
@@ -36,6 +36,13 @@ export default function IntroScreen() {
   const start = useUiStore((s) => s.start)
   const [nameDone, setNameDone] = useState(false)
   const splash = useMemo(() => SPLASHES[Math.floor(Date.now() / 60000) % SPLASHES.length], [])
+
+  // Warm the 3D chunk while the player reads the intro → PRESS START is instant
+  useEffect(() => {
+    const idle = window.requestIdleCallback ?? ((fn) => setTimeout(fn, 800))
+    const id = idle(() => import('../scene/World'))
+    return () => (window.cancelIdleCallback ?? clearTimeout)(id)
+  }, [])
 
   function pressStart() {
     sfx.start() // joyful jingle; first user gesture also unlocks the AudioContext
@@ -126,10 +133,36 @@ export default function IntroScreen() {
         ▶ START GAME
       </motion.button>
 
+      <a
+        className="font-body text-xs font-semibold text-neon underline underline-offset-2 hover:text-pix-yellow"
+        href="/resume"
+        onClick={() => trackEvent('skip_to_resume')}
+      >
+        Skip the game → View resume &amp; projects
+      </a>
+
       <p className="max-w-sm font-body text-xs text-ink-dim">
         Walk two laps of a voxel world: Round 1 is my story, Round 2 is the
         playground. Collect coins, poke Bugsy — and report the bugs you find 🐞
       </p>
+
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <a
+          className="border-2 border-neon px-2 py-1 font-pixel text-[8px] text-neon hover:bg-neon/10"
+          href="https://github.com/SoyedFajol/minecraft-inspired-personal-portfolio/tree/main/qa"
+          target="_blank"
+          rel="noreferrer"
+          title="Unit + e2e tests run in CI on every push — see the test plan"
+        >
+          TESTED ✓ · UNIT + E2E + CI
+        </a>
+        <a
+          className="border-2 border-pix-yellow px-2 py-1 font-pixel text-[8px] text-pix-yellow hover:bg-pix-yellow/10"
+          href={`mailto:${PROFILE.email}?subject=SQA role — found you via the portfolio`}
+        >
+          OPEN TO SQA ROLES — EMAIL ME
+        </a>
+      </div>
 
       {/* voxel grass strip along the bottom */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 flex">

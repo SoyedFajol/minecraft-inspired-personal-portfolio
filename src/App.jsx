@@ -28,18 +28,20 @@ import SectionOverlay from './components/SectionOverlay'
 import ResumePage from './components/ResumePage'
 import { PrivacyPage, TermsPage, GameOverPage } from './components/StaticPages'
 
-import JourneySection from './components/sections/JourneySection'
-import SkillsSection from './components/sections/SkillsSection'
-import ProjectsSection from './components/sections/ProjectsSection'
-import QuestionDungeon from './components/sections/QuestionDungeon'
-import RoadmapSection from './components/sections/RoadmapSection'
-import LearningGame from './components/sections/LearningGame'
-import JobQuestBoard from './components/sections/JobQuestBoard'
-import CompanyDirectory from './components/sections/CompanyDirectory'
-import AskMeSection from './components/sections/AskMeSection'
-import SideQuestsSection from './components/sections/SideQuestsSection'
-import ContactSection from './components/sections/ContactSection'
-import ServicesSection from './components/sections/ServicesSection'
+// Sections are lazy so the intro screen ships without Round 1+2 content —
+// each chunk loads the first time its crystal is opened.
+const JourneySection = lazy(() => import('./components/sections/JourneySection'))
+const SkillsSection = lazy(() => import('./components/sections/SkillsSection'))
+const ProjectsSection = lazy(() => import('./components/sections/ProjectsSection'))
+const QuestionDungeon = lazy(() => import('./components/sections/QuestionDungeon'))
+const RoadmapSection = lazy(() => import('./components/sections/RoadmapSection'))
+const LearningGame = lazy(() => import('./components/sections/LearningGame'))
+const JobQuestBoard = lazy(() => import('./components/sections/JobQuestBoard'))
+const CompanyDirectory = lazy(() => import('./components/sections/CompanyDirectory'))
+const AskMeSection = lazy(() => import('./components/sections/AskMeSection'))
+const SideQuestsSection = lazy(() => import('./components/sections/SideQuestsSection'))
+const ContactSection = lazy(() => import('./components/sections/ContactSection'))
+const ServicesSection = lazy(() => import('./components/sections/ServicesSection'))
 
 const World = lazy(() => import('./scene/World'))
 
@@ -240,7 +242,7 @@ function GameWorld() {
             </a>
           </p>
           <p className="mt-2 font-pixel text-[8px] text-ink-dim">
-            built & QA-tested by Soyed Solaman · React + Three.js · 55 unit tests, CI, and one cliff
+            built & QA-tested by Soyed Solaman · React + Three.js · 55 unit tests, Playwright e2e, CI, and one cliff
           </p>
         </footer>
       </div>
@@ -529,7 +531,11 @@ function Game() {
         onClose={closeSection}
         wide={meta ? WIDE_SECTIONS.has(meta.id) : false}
       >
-        {Body && <Body />}
+        {Body && (
+          <Suspense fallback={<p className="p-6 text-center font-pixel text-[10px] text-neon">LOADING…</p>}>
+            <Body />
+          </Suspense>
+        )}
       </SectionOverlay>
 
       <Toasts />

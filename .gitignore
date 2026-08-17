@@ -5,6 +5,8 @@ dist
 .env.*
 !.env.example
 coverage
+test-results/
+playwright-report/
 *.log
 .DS_Store
 

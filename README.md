@@ -4,11 +4,12 @@ A gamified 3D pixel-RPG portfolio, built as a playable voxel world.
 
 **🎮 Live demo: https://soyed-solaman.vercel.app**
 
+[![CI](https://github.com/SoyedFajol/minecraft-inspired-personal-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/SoyedFajol/minecraft-inspired-personal-portfolio/actions/workflows/ci.yml)
 ![React](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white)
 ![Three.js](https://img.shields.io/badge/Three.js-r169-000000?logo=threedotjs&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5-646cff?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8?logo=tailwindcss&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-55%20passing-39ff88)
+![Tests](https://img.shields.io/badge/tests-55%20unit%20%2B%20e2e-39ff88)
 ![Deployed on Vercel](https://img.shields.io/badge/Vercel-deployed-black?logo=vercel)
 
 ![Screenshot of the voxel world](public/og.png)
@@ -42,7 +43,7 @@ visitors.
 | Audio | Web Audio API — all sounds synthesized in code |
 | Backend | Vercel serverless functions (`/api`) — Gemini quiz generator, JSearch job feed |
 | Forms | Web3Forms + Calendly |
-| Quality | Vitest (55 unit tests) · ESLint · GitHub Actions CI · [manual test cases, API tests & k6 load tests](qa/) |
+| Quality | Vitest (55 unit tests) · Playwright e2e (desktop + mobile, in CI) · ESLint · GitHub Actions on every push · [test plan, manual test cases, API tests & k6 load tests](qa/) |
 
 ## Quick start
 
@@ -54,9 +55,10 @@ npm run dev      # → http://localhost:5173
 ```
 
 ```bash
-npm test         # vitest unit suite
-npm run lint     # eslint
-npm run build    # production build
+npm test           # vitest unit suite (55 tests)
+npm run test:e2e   # playwright e2e (needs: npx playwright install chromium)
+npm run lint       # eslint
+npm run build      # production build
 ```
 
 The site runs fully without any API keys — AI features fall back to built-in

@@ -7,7 +7,7 @@ import { sfx } from '../game/sfx'
 /** Persistent game HUD: rank, XP bar, sound, render mode, level select. */
 export default function Hud() {
   const { xp, level, mute, toggleMute } = useGameStore()
-  const { flatMode, setFlatMode, flatModeReason, setNavOpen, setMapOpen, zoomBy, theme, toggleTheme } = useUiStore()
+  const { flatMode, setFlatMode, flatModeReason, setNavOpen, setMapOpen, zoomBy, theme, toggleTheme, openSection } = useUiStore()
   const rank = rankForLevel(level)
   const { pct, next } = progressToNext(xp)
 
@@ -39,11 +39,29 @@ export default function Hud() {
       </motion.div>
 
       <motion.div
-        className="pointer-events-auto flex gap-2"
+        className="pointer-events-auto flex max-w-[70vw] flex-wrap justify-end gap-2"
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 260, damping: 22, delay: 0.45 }}
       >
+        {/* recruiters never have to walk anywhere: resume + contact live here */}
+        <a
+          className="pixel-btn !border-neon !px-3 !py-2 !text-[10px]"
+          href="/resume"
+          aria-label="View resume"
+        >
+          📄 RESUME
+        </a>
+        <button
+          className="pixel-btn !border-neon !px-3 !py-2 !text-[10px]"
+          onClick={() => {
+            sfx.blip()
+            openSection('contact')
+          }}
+          aria-label="Open contact section"
+        >
+          ✉ CONTACT
+        </button>
         {!flatMode && (
           <>
             <button

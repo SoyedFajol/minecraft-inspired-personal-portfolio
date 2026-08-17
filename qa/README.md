@@ -6,7 +6,9 @@ test. (The 55-test unit suite lives in `/tests` and runs with `npm test`.)
 
 | Artifact | What it covers | How to run |
 | --- | --- | --- |
+| [`TEST-PLAN.md`](TEST-PLAN.md) | Scope, test levels, browsers/devices, known bugs | read |
 | [`TEST-CASES.md`](TEST-CASES.md) | Manual functional test cases (30+) | read & execute |
+| [`../tests/e2e/`](../tests/e2e/) | Playwright e2e smoke suite (desktop + mobile viewport, in CI) | `npm run test:e2e` |
 | [`CHECKLIST.md`](CHECKLIST.md) | Pre-release regression checklist | tick before every deploy |
 | [`api/api-tests.mjs`](api/api-tests.mjs) | Automated API + smoke tests | `npm run test:api` |
 | [`security/security-tests.mjs`](security/security-tests.mjs) | Automated security tests (headers, CSP, secret/PII leaks, API hardening) | `npm run test:security` |
