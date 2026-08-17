@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Stars, Sparkles, Html, PerformanceMonitor } from '@react-three/drei'
+import { Stars, Sparkles, Html } from '@react-three/drei'
 import * as THREE from 'three'
 import Hero from './Hero'
 import BugsyNpc from './BugsyNpc'
@@ -2222,26 +2222,14 @@ export default function World({ progressRef, visitedIds, onOpenSection }) {
     return () => document.removeEventListener('visibilitychange', onVis)
   }, [])
 
-  // Sharp by default (native pixel ratio up to 2×), and PerformanceMonitor
-  // ratchets resolution down only on devices that actually drop frames —
-  // crisp on good phones, smooth on budget ones.
-  const maxDpr = Math.min(window.devicePixelRatio || 1, 2)
-  const [dpr, setDpr] = useState(maxDpr)
-
   return (
     <div className="fixed inset-0 z-0" aria-hidden="true">
       <Canvas
         frameloop={visible ? 'always' : 'never'}
-        dpr={dpr}
+        dpr={[1, mobile ? 1.25 : 1.5]}
         camera={{ fov: 55, near: 0.1, far: 210, position: [0, 6.2, 10] }}
         gl={{ antialias: !mobile, powerPreference: 'high-performance' }}
       >
-        <PerformanceMonitor
-          flipflops={2}
-          onDecline={() => setDpr((d) => Math.max(1, Math.round(d * 0.7 * 100) / 100))}
-          onIncline={() => setDpr(maxDpr)}
-          onFallback={() => setDpr(mobile ? 1.25 : 1.5)}
-        />
         <color attach="background" args={[T.bg]} />
         <fog attach="fog" args={[T.bg, 24, mobile ? 80 : 112]} />
 

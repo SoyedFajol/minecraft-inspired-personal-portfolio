@@ -29,19 +29,34 @@ import ResumePage from './components/ResumePage'
 import { PrivacyPage, TermsPage, GameOverPage } from './components/StaticPages'
 
 // Sections are lazy so the intro screen ships without Round 1+2 content —
-// each chunk loads the first time its crystal is opened.
-const JourneySection = lazy(() => import('./components/sections/JourneySection'))
-const SkillsSection = lazy(() => import('./components/sections/SkillsSection'))
-const ProjectsSection = lazy(() => import('./components/sections/ProjectsSection'))
-const QuestionDungeon = lazy(() => import('./components/sections/QuestionDungeon'))
-const RoadmapSection = lazy(() => import('./components/sections/RoadmapSection'))
-const LearningGame = lazy(() => import('./components/sections/LearningGame'))
-const JobQuestBoard = lazy(() => import('./components/sections/JobQuestBoard'))
-const CompanyDirectory = lazy(() => import('./components/sections/CompanyDirectory'))
-const AskMeSection = lazy(() => import('./components/sections/AskMeSection'))
-const SideQuestsSection = lazy(() => import('./components/sections/SideQuestsSection'))
-const ContactSection = lazy(() => import('./components/sections/ContactSection'))
-const ServicesSection = lazy(() => import('./components/sections/ServicesSection'))
+// but ALL of them are prefetched right after the game starts (see Game), so
+// opening a crystal never waits on the network.
+const SECTION_IMPORTS = {
+  journey: () => import('./components/sections/JourneySection'),
+  skills: () => import('./components/sections/SkillsSection'),
+  projects: () => import('./components/sections/ProjectsSection'),
+  dungeon: () => import('./components/sections/QuestionDungeon'),
+  roadmap: () => import('./components/sections/RoadmapSection'),
+  game: () => import('./components/sections/LearningGame'),
+  jobs: () => import('./components/sections/JobQuestBoard'),
+  companies: () => import('./components/sections/CompanyDirectory'),
+  ask: () => import('./components/sections/AskMeSection'),
+  sidequests: () => import('./components/sections/SideQuestsSection'),
+  contact: () => import('./components/sections/ContactSection'),
+  services: () => import('./components/sections/ServicesSection'),
+}
+const JourneySection = lazy(SECTION_IMPORTS.journey)
+const SkillsSection = lazy(SECTION_IMPORTS.skills)
+const ProjectsSection = lazy(SECTION_IMPORTS.projects)
+const QuestionDungeon = lazy(SECTION_IMPORTS.dungeon)
+const RoadmapSection = lazy(SECTION_IMPORTS.roadmap)
+const LearningGame = lazy(SECTION_IMPORTS.game)
+const JobQuestBoard = lazy(SECTION_IMPORTS.jobs)
+const CompanyDirectory = lazy(SECTION_IMPORTS.companies)
+const AskMeSection = lazy(SECTION_IMPORTS.ask)
+const SideQuestsSection = lazy(SECTION_IMPORTS.sidequests)
+const ContactSection = lazy(SECTION_IMPORTS.contact)
+const ServicesSection = lazy(SECTION_IMPORTS.services)
 
 const World = lazy(() => import('./scene/World'))
 
@@ -491,6 +506,15 @@ function Game() {
     if (!webglAvailable()) setFlatMode(true, 'webgl')
     else if (reducedMotion) setFlatMode(true, 'motion')
   }, [reducedMotion, setFlatMode])
+
+  // Warm every section chunk once the world is up — crystals open instantly
+  // instead of waiting on a network fetch.
+  useEffect(() => {
+    if (!started) return
+    const idle = window.requestIdleCallback ?? ((fn) => setTimeout(fn, 1200))
+    const id = idle(() => Object.values(SECTION_IMPORTS).forEach((load) => load()))
+    return () => (window.cancelIdleCallback ?? clearTimeout)(id)
+  }, [started])
 
   // Reward + analytics whenever a section opens; lock body scroll under overlays.
   useEffect(() => {
