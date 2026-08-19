@@ -207,10 +207,10 @@ export default function AskMeSection() {
         </section>
       </div>
 
-      <section className="pixel-panel" aria-label="Direct contact links">
+      <section className="pixel-panel text-center" aria-label="Direct contact links">
         <h3 className="mb-3 text-[10px] text-neon">✨ DIRECT COMMUNICATION SPELLS</h3>
-        <div className="grid gap-2 sm:grid-cols-3">
-          <a className="pixel-btn !text-[10px]" href={`mailto:${PROFILE.email}`} onClick={() => sfx.blip()}>
+        <div className="mx-auto grid max-w-md gap-3">
+          <a className="pixel-btn break-all !text-[10px]" href={`mailto:${PROFILE.email}`} onClick={() => sfx.blip()}>
             📧 {PROFILE.email}
           </a>
           <a className="pixel-btn !border-pix-purple !text-[10px]" href={PROFILE.github} target="_blank" rel="noreferrer" onClick={() => sfx.blip()}>
