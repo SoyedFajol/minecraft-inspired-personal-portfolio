@@ -30,8 +30,9 @@ export const SECTIONS = [
   { id: 'jobs', round: 2, icon: '📜', label: 'Job Quest Board', blurb: 'Live QA quests (BD)', at: 0.63 },
   { id: 'companies', round: 2, icon: '🏢', label: 'Company Codex', blurb: 'Top BD software guilds', at: 0.71 },
   { id: 'ask', round: 2, icon: '🤝', label: 'Ask Me / Party Up', blurb: 'Raven or a session', at: 0.79 },
+  { id: 'handbook', round: 2, icon: '📖', label: 'QA Handbook', blurb: '3 full books + cheat sheets', at: 0.86 },
 
-  // ── 0.79 → 0.98: the garden victory lap… then the cliff. See you at the start.
+  // ── 0.86 → 0.98: the garden victory lap… then the cliff. See you at the start.
 ]
 
 export function sectionById(id) {

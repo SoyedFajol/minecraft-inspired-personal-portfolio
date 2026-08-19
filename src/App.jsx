@@ -44,6 +44,7 @@ const SECTION_IMPORTS = {
   sidequests: () => import('./components/sections/SideQuestsSection'),
   contact: () => import('./components/sections/ContactSection'),
   services: () => import('./components/sections/ServicesSection'),
+  handbook: () => import('./components/sections/HandbookSection'),
 }
 const JourneySection = lazy(SECTION_IMPORTS.journey)
 const SkillsSection = lazy(SECTION_IMPORTS.skills)
@@ -57,6 +58,7 @@ const AskMeSection = lazy(SECTION_IMPORTS.ask)
 const SideQuestsSection = lazy(SECTION_IMPORTS.sidequests)
 const ContactSection = lazy(SECTION_IMPORTS.contact)
 const ServicesSection = lazy(SECTION_IMPORTS.services)
+const HandbookSection = lazy(SECTION_IMPORTS.handbook)
 
 const World = lazy(() => import('./scene/World'))
 
@@ -73,6 +75,7 @@ const SECTION_COMPONENTS = {
   sidequests: SideQuestsSection,
   contact: ContactSection,
   services: ServicesSection,
+  handbook: HandbookSection,
 }
 const WIDE_SECTIONS = new Set(['dungeon', 'game', 'jobs', 'companies', 'ask', 'projects'])
 
