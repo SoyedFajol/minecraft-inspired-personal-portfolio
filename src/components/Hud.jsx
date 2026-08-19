@@ -56,9 +56,9 @@ export default function Hud() {
           className="pixel-btn !border-neon !px-3 !py-2 !text-[10px]"
           onClick={() => {
             sfx.blip()
-            openSection('contact')
+            openSection('ask')
           }}
-          aria-label="Open contact section"
+          aria-label="Open contact and booking section"
         >
           ✉ CONTACT
         </button>

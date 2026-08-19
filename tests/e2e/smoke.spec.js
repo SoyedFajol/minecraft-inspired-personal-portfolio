@@ -20,7 +20,7 @@ test('pressing start reveals the HUD with resume + contact', async ({ page }) =>
   await page.goto('/')
   await page.getByRole('button', { name: /START GAME/ }).click()
   await expect(page.getByRole('link', { name: 'View resume', exact: true })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Open contact section' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Open contact and booking section' })).toBeVisible()
 })
 
 test('/resume renders summary, projects, skills and print button', async ({ page }) => {

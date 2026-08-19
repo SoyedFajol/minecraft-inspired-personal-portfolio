@@ -206,6 +206,21 @@ export default function AskMeSection() {
           <PartyUp />
         </section>
       </div>
+
+      <section className="pixel-panel" aria-label="Direct contact links">
+        <h3 className="mb-3 text-[10px] text-neon">✨ DIRECT COMMUNICATION SPELLS</h3>
+        <div className="grid gap-2 sm:grid-cols-3">
+          <a className="pixel-btn !text-[10px]" href={`mailto:${PROFILE.email}`} onClick={() => sfx.blip()}>
+            📧 {PROFILE.email}
+          </a>
+          <a className="pixel-btn !border-pix-purple !text-[10px]" href={PROFILE.github} target="_blank" rel="noreferrer" onClick={() => sfx.blip()}>
+            🐙 GitHub — SoyedFajol
+          </a>
+          <a className="pixel-btn !border-pix-purple !text-[10px]" href={PROFILE.linkedin} target="_blank" rel="noreferrer" onClick={() => sfx.blip()}>
+            💼 LinkedIn
+          </a>
+        </div>
+      </section>
     </div>
   )
 }

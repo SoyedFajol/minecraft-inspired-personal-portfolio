@@ -19,7 +19,8 @@ export const SECTIONS = [
   { id: 'projects', round: 1, icon: '🕹️', label: 'Projects Arcade', blurb: 'Real builds & repos', at: 0.18 },
   { id: 'sidequests', round: 1, icon: '🏆', label: 'Achievements & Extracurricular', blurb: 'CP trophies, sports, campus life', at: 0.24 },
   { id: 'roadmap', round: 1, icon: '🧭', label: 'Career Roadmaps', blurb: 'QA, AI, frontend, backend, CP — with resources', at: 0.30 },
-  { id: 'contact', round: 1, icon: '💌', label: 'Resume & Contact', blurb: 'Join my party', at: 0.36 },
+  // id stays 'contact' (it lives in save files) even though the stop is now resume-only
+  { id: 'contact', round: 1, icon: '📄', label: 'My Resume', blurb: 'The official quest scroll', at: 0.36 },
   { id: 'services', round: 1, icon: '🛠️', label: 'Services Guild', blurb: 'Hire me for a quest', at: 0.385 },
 
   // ── the GAP: jump to Round 2 ── (walkway hole at 0.405–0.425)
@@ -29,8 +30,9 @@ export const SECTIONS = [
   { id: 'game', round: 2, icon: '⚔️', label: 'Learning Game', blurb: '15+ questions per topic', at: 0.55 },
   { id: 'jobs', round: 2, icon: '📜', label: 'Job Quest Board', blurb: 'Live QA quests (BD)', at: 0.63 },
   { id: 'companies', round: 2, icon: '🏢', label: 'Company Codex', blurb: 'Top BD software guilds', at: 0.71 },
-  { id: 'ask', round: 2, icon: '🤝', label: 'Ask Me / Party Up', blurb: 'Raven or a session', at: 0.79 },
-  { id: 'handbook', round: 2, icon: '📖', label: 'QA Handbook', blurb: '3 full books + cheat sheets', at: 0.86 },
+  { id: 'handbook', round: 2, icon: '📖', label: 'QA Handbook', blurb: '3 full books + cheat sheets', at: 0.79 },
+  // the finale: every way to reach Soyed, right before the cliff
+  { id: 'ask', round: 2, icon: '🤝', label: 'Ask Me / Party Up', blurb: 'Raven, links or a session', at: 0.86 },
 
   // ── 0.86 → 0.98: the garden victory lap… then the cliff. See you at the start.
 ]

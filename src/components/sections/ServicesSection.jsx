@@ -86,7 +86,7 @@ export default function ServicesSection() {
           className="pixel-btn mt-3"
           onClick={() => {
             sfx.blip()
-            openSection('contact')
+            openSection('ask')
           }}
         >
           💌 SEND A RAVEN
